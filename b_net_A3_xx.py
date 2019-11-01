@@ -1,5 +1,7 @@
 import sys
 import json
+from itertools import product
+import numpy as np
 
 class BayesianNetwork(object):
     def __init__(self, structure, values, queries):
@@ -13,6 +15,85 @@ class BayesianNetwork(object):
 
     def construct(self):
         # TODO: Your code here to construct the Bayesian network
+
+
+        def fetch_conditional_probability(variable_name, variable_value, conditional_values):
+            '''
+
+            :param variable_name: single string of variable
+            :param variable_value: its value
+            :param conditional_values: dictionary of conditional names and value
+            :return: conditional probability
+            '''
+            conditional_probabilities_list = self.conditional_probabilities[variable_name]
+            for values in conditional_probabilities_list:
+                # each value is a dictionary
+                # we need to check if all keys in this dictionary exists in conditional_values
+                # apart from own_value and probability
+                is_correct_conditionals = True
+                for key in values:
+                    if key == "own_value":
+                        if not values[key] == variable_value:
+                            is_correct_conditionals = False
+                            break
+                        continue
+                    if key == "probability":
+                        continue
+                    try:
+                        if not (values[key] == conditional_values[key]):
+                            is_correct_conditionals = False
+                            break
+                        else: continue
+                    except:
+                        print("conditional variable in given dict is not found in conditionals in formula!")
+                if not is_correct_conditionals: # the truth value is incorrect here; go onto next value
+                    continue
+                else: # else get probability
+                    return values["probability"]
+            print ("this shouldnt be happening")
+            return
+
+        def form_table(formula):
+            # formula is a list, i assume first element is non conditioned
+            t_table = (np.array(list(product(('True', 'False'), repeat=len(formula)))))
+            probability = []
+            for row in t_table:
+                probability_cum_product = 1
+                for index,truth_value in enumerate(row):
+                    variable = formula[index] # variable A in P(A | B,C,D ... )
+                    variable_value = row[index]
+                    conditionals = formula[:index] # variables B,C,D ... in P(A | B,C,D ... )
+                    if not conditionals: # if conditionals are empty, just look at prior
+                        probability_cum_product*=self.prior_probabilities[variable][variable_value]
+                        continue
+                    if variable in self.prior_probabilities:
+                        probability_cum_product *= self.prior_probabilities[variable][variable_value]
+                        continue
+                    conditional_truth_values = dict(zip(conditionals, row[:index]))
+                    #print(conditional_truth_values)
+                    probability_cum_product *= fetch_conditional_probability(variable, variable_value, conditional_truth_values)
+                probability.append(probability_cum_product)
+            print (t_table)
+            print (formula)
+            print( "joint probability, from formula:")
+            print (probability)
+            return formula, np.column_stack((t_table, probability))
+
+        #CODE FOR FORMING FORMULA SEQUENCE HERE
+        # ==================================== #
+
+        # ==================================== #
+
+        # I should be receiving the formula from you in the following list format:
+        # ["Burglary","Earthquake","Alarm"] implies
+        # P(Burglary) * P(Earthquake| Burglary) * P(Alarm | Earthquake, Burglary)
+
+        self.variables, self.truth_table = form_table(["Burglary","Earthquake","Alarm"])
+        print(self.variables)
+        print(self.truth_table)
+
+
+
         pass
 
     def infer(self):

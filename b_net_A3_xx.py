@@ -16,6 +16,34 @@ class BayesianNetwork(object):
     def construct(self):
         # TODO: Your code here to construct the Bayesian network
 
+        def form_formula():
+            parentCount = dict()
+            events = self.variables.keys()
+            parentlessEvents = list()
+            invertedDependencies = dict()
+            result = list()
+
+            for var in self.variables.keys():
+                invertedDependencies[var] = list()
+
+            for key, val in self.dependencies.items():
+                for parent in val:
+                    invertedDependencies[parent].append(key)
+
+            for event in events:
+                parentCount[event] = len(self.dependencies[event]) if event in self.dependencies.keys() else 0
+                if parentCount[event] == 0:
+                    parentlessEvents.append(event)
+
+            while len(parentlessEvents) != 0:
+                parentlessEvent = parentlessEvents.pop(0)
+                result.append(parentlessEvent)
+                for child in invertedDependencies[parentlessEvent]:
+                    parentCount[child] -= 1
+                    if parentCount[child] == 0:
+                        parentlessEvents.append(child)
+
+            return result
 
         def fetch_conditional_probability(variable_name, variable_value, conditional_values):
             '''
@@ -88,13 +116,10 @@ class BayesianNetwork(object):
         # ["Burglary","Earthquake","Alarm"] implies
         # P(Burglary) * P(Earthquake| Burglary) * P(Alarm | Earthquake, Burglary)
 
-        self.variables, self.truth_table = form_table(["Burglary","Earthquake","Alarm"])
+        self.variables, self.truth_table = form_table(form_formula())
         print(self.variables)
         print(self.truth_table)
 
-
-
-        pass
 
     def infer(self):
         # TODO: Your code here to answer the queries given using the Bayesian

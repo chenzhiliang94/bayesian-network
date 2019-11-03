@@ -125,12 +125,11 @@ class BayesianNetwork(object):
 
         return sum
 
-    # varQueried: e.g. "MaryCalls"
-    # queryValue: e.g. "True"
+    # queryPairs: e.g. [("MaryCalls", "True")]
     # givens:     e.g. [("Earthquake", False), ("Burglary", False)]
-    def query(self, queryVar, queryVal, givens):
+    def query(self, queryPairs, givens):
         givensCopy = givens.copy()
-        givensCopy.append((queryVar, queryVal))
+        givensCopy.extend(queryPairs)
         numerator = self.calcSum(givensCopy)
         denominator = self.calcSum(givens)
         return numerator / denominator
@@ -140,8 +139,8 @@ class BayesianNetwork(object):
         # TODO: Your code here to answer the queries given using the Bayesian
         # network built in the construct() method.
         self.answer = []  # your code to find the answer
-        print(self.query("MaryCalls", "True", [("Alarm", "False")]))
-        print(self.query("Alarm", "False", [("Burglary", "False"), ("Earthquake", "True")]))
+        print(self.query([("MaryCalls", "True")], [("Alarm", "False")]))
+        print(self.query([("Alarm", "False")], [("Burglary", "False"), ("Earthquake", "True")]))
         # for the given example:
         # self.answer = [{"index": 1, "answer": 0.01}, {"index": 2, "answer": 0.71}]
         # the format of the answer returned SHOULD be as shown above.

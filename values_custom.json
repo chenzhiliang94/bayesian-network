@@ -1,0 +1,333 @@
+{
+    "prior_probabilities": {
+        "creative": {
+            "True": 0.69932,
+            "False": 0.30068
+        },
+        "smart": {
+            "True": 0.70472,
+            "False": 0.29528
+        },
+	"party": {
+            "True": 0.60216,
+            "False": 0.39784
+        }
+    },
+    "conditional_probabilities": {
+        "mac": [
+            {
+                "creative": "True",
+                "smart": "True",
+                "own_value": "True",
+                "probability": 0.68564
+            },
+	    {
+                "creative": "True",
+                "smart": "True",
+                "own_value": "False",
+                "probability": 0.31436
+            },
+{
+                "creative": "True",
+                "smart": "False",
+                "own_value": "True",
+                "probability": 0.89635
+            },
+{
+                "creative": "True",
+                "smart": "False",
+                "own_value": "False",
+                "probability": 0.10365
+            },
+{
+                "creative": "False",
+                "smart": "True",
+                "own_value": "True",
+                "probability": 0.41347
+            },
+{
+                "creative": "False",
+                "smart": "True",
+                "own_value": "False",
+                "probability": 0.58653
+            },
+{
+                "creative": "False",
+                "smart": "False",
+                "own_value": "True",
+                "probability": 0.12329
+            },
+{
+                "creative": "False",
+                "smart": "False",
+                "own_value": "False",
+                "probability": 0.87671
+            }
+        ],
+        "success": [
+            {
+		"project":"True",
+                "hw": "True",
+                "own_value": "True",
+                "probability": 0.89633
+            },
+            {
+		"project":"True",
+                "hw": "False",
+                "own_value": "True",
+                "probability": 0.20737
+            },
+	    {
+		"project":"False",
+                "hw": "True",
+                "own_value": "True",
+                "probability": 0.30714
+            },
+	    {
+		"project":"False",
+                "hw": "False",
+                "own_value": "True",
+                "probability": 0.05066
+            },
+	     {
+		"project":"True",
+                "hw": "True",
+                "own_value": "False",
+                "probability": 0.10367
+            },
+            {
+		"project":"True",
+                "hw": "False",
+                "own_value": "False",
+                "probability": 0.79263
+            },
+	    {
+		"project":"False",
+                "hw": "True",
+                "own_value": "False",
+                "probability": 0.69286
+            },
+	    {
+		"project":"False",
+                "hw": "False",
+                "own_value": "False",
+                "probability": 0.94934
+            }
+        ],
+        "happy": [
+            {
+                "success": "True",
+		"mac": "True",
+		"party": "True",
+                "own_value": "True",
+                "probability": 0.95842
+            },
+            {
+                "success": "True",
+		"mac": "True",
+		"party": "False",
+                "own_value": "True",
+                "probability": 0.35837
+            },
+            {
+                "success": "True",
+		"mac": "False",
+		"party": "True",
+                "own_value": "True",
+                "probability": 0.72082
+            },
+            {
+                "success": "True",
+		"mac": "False",
+		"party": "False",
+                "own_value": "True",
+                "probability": 0.30769
+            },
+	    {
+                "success": "False",
+		"mac": "True",
+		"party": "True",
+                "own_value": "True",
+                "probability": 0.49234
+            },
+{
+                "success": "False",
+		"mac": "True",
+		"party": "False",
+                "own_value": "True",
+                "probability": 0.20619
+            },
+{
+                "success": "False",
+		"mac": "False",
+		"party": "True",
+                "own_value": "True",
+                "probability": 0.42043
+            },
+{
+                "success": "False",
+		"mac": "False",
+		"party": "False",
+                "own_value": "True",
+                "probability": 0.09646
+            },
+{
+                "success": "True",
+		"mac": "True",
+		"party": "True",
+                "own_value": "False",
+                "probability": 0.04158
+            },
+            {
+                "success": "True",
+		"mac": "True",
+		"party": "False",
+                "own_value": "False",
+                "probability": 0.64163
+            },
+            {
+                "success": "True",
+		"mac": "False",
+		"party": "True",
+                "own_value": "False",
+                "probability": 0.27918
+            },
+            {
+                "success": "True",
+		"mac": "False",
+		"party": "False",
+                "own_value": "False",
+                "probability": 0.69231
+            },
+	    {
+                "success": "False",
+		"mac": "True",
+		"party": "True",
+                "own_value": "False",
+                "probability": 0.50766
+            },
+{
+                "success": "False",
+		"mac": "True",
+		"party": "False",
+                "own_value": "False",
+                "probability": 0.79381
+            },
+{
+                "success": "False",
+		"mac": "False",
+		"party": "True",
+                "own_value": "False",
+                "probability": 0.57957
+            },
+{
+                "success": "False",
+		"mac": "False",
+		"party": "False",
+                "own_value": "False",
+                "probability": 0.90354
+            }
+        ],
+	"project": [
+            {
+                "creative": "True",
+                "smart": "True",
+                "own_value": "True",
+                "probability": 0.90484
+            },
+	    {
+                "creative": "True",
+                "smart": "True",
+                "own_value": "False",
+                "probability": 0.09516
+            },
+{
+                "creative": "True",
+                "smart": "False",
+                "own_value": "True",
+                "probability": 0.40307
+            },
+{
+                "creative": "True",
+                "smart": "False",
+                "own_value": "False",
+                "probability": 0.59693
+            },
+{
+                "creative": "False",
+                "smart": "True",
+                "own_value": "True",
+                "probability": 0.79326
+            },
+{
+                "creative": "False",
+                "smart": "True",
+                "own_value": "False",
+                "probability": 0.20674
+            },
+{
+                "creative": "False",
+                "smart": "False",
+                "own_value": "True",
+                "probability": 0.10731
+            },
+{
+                "creative": "False",
+                "smart": "False",
+                "own_value": "False",
+                "probability": 0.89269
+            }
+        ],
+	"hw": [
+            {
+                "smart": "True",
+		"party": "True",
+                "own_value": "True",
+                "probability": 0.80252
+            },
+{
+                "smart": "True",
+		"party": "False",
+                "own_value": "True",
+                "probability": 0.89790
+            },
+{
+                "smart": "False",
+		"party": "True",
+                "own_value": "True",
+                "probability": 0.09447
+            },
+{
+                "smart": "False",
+		"party": "False",
+                "own_value": "True",
+                "probability": 0.30556
+            },
+{
+                "smart": "True",
+		"party": "True",
+                "own_value": "False",
+                "probability": 0.19748
+            },
+{
+                "smart": "True",
+		"party": "False",
+                "own_value": "False",
+                "probability": 0.1021
+            },
+{
+                "smart": "False",
+		"party": "True",
+                "own_value": "False",
+                "probability": 0.90553
+            },
+{
+                "smart": "False",
+		"party": "False",
+                "own_value": "False",
+                "probability": 0.69444
+            }
+	]
+	    
+    }
+}

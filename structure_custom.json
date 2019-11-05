@@ -1,0 +1,59 @@
+{
+    "variables": {
+        "creative": [
+            "True",
+            "False"
+        ],
+        "smart": [
+            "True",
+            "False"
+        ],
+        "mac": [
+            "True",
+            "False"
+        ],
+        "hw": [
+            "True",
+            "False"
+        ],
+        "project": [
+            "True",
+            "False"
+        ],
+	"party": [
+            "True",
+            "False"
+        ],
+	"success": [
+            "True",
+            "False"
+        ],
+	"happy": [
+            "True",
+            "False"
+        ]
+    },
+    "dependencies": {
+        "mac": [
+            "creative",
+            "smart"
+        ],
+        "success": [
+            "project",
+	    "hw"
+        ],
+        "happy": [
+            "success",
+	    "mac",
+	    "party"
+        ],
+	"project": [
+            "creative",
+	    "smart"
+        ],
+	"hw": [
+            "smart",
+	    "party"
+        ]
+    }
+}

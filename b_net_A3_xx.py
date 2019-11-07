@@ -151,6 +151,13 @@ class BayesianNetwork(object):
         # for the given example:
         # self.answer = [{"index": 1, "answer": 0.01}, {"index": 2, "answer": 0.71}]
         # the format of the answer returned SHOULD be as shown above.
+        for query in self.queries:
+            ansIndex = query['index']
+            queryGivens = [(var, val) for var, val in query['given'].items()]
+            queryTofinds = [(var, val) for var, val in query['tofind'].items()]
+            ansResult = self.query(queryTofinds, queryGivens)
+            self.answer.append({'index': ansIndex, 'answer': ansResult})
+
         return self.answer
 
     # You may add more classes/functions if you think is useful. However, ensure
@@ -182,6 +189,7 @@ def main():
     b_network = BayesianNetwork(structure, values, queries)
     b_network.construct()
     answers = b_network.infer()
+    print(answers)
 
 
 

@@ -3,5 +3,10 @@
         "index" : 1,
         "given" : {"smart" : "True"},
         "tofind" : {"happy" : "True"}
+    },
+    {
+        "index" : 2,
+        "given" : {"smart" : "True"},
+        "tofind" : {"party" : "True"}
     }
 ]

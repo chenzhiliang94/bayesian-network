@@ -1,7 +1,6 @@
 import sys
 import json
 from itertools import product
-import numpy as np
 
 class BayesianNetwork(object):
     def __init__(self, structure, values, queries):
@@ -86,7 +85,9 @@ class BayesianNetwork(object):
 
     def form_table(self):
         # formula is a list, i assume first element is non conditioned
-        t_table = (np.array(list(product(('True', 'False'), repeat=len(self.formula)))))
+        t_table = list(product(('True', 'False'), repeat=len(self.formula))) # create truth table of all possible T/F
+        t_table = list(map(list, t_table)) # convert to list of list
+
         probability = []
         for row in t_table:
             probability_cum_product = 1
@@ -105,7 +106,10 @@ class BayesianNetwork(object):
                 probability_cum_product *= self.fetch_conditional_probability(variable, variable_value, conditional_truth_values)
             probability.append(probability_cum_product)
 
-        self.truth_table = np.column_stack((t_table, probability))
+        for index in range(len(t_table)):
+            t_table[index].append(probability[index])
+        self.truth_table = t_table
+
 
     # givens: e.g. [("Earthquake", False), ("Burglary", False)]
     def calcSum(self, definedValues):

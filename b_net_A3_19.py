@@ -143,16 +143,6 @@ class BayesianNetwork(object):
         # TODO: Your code here to answer the queries given using the Bayesian
         # network built in the construct() method.
         self.answer = []  # your code to find the answer
-        #print(self.query([("Burglary", "False"), ("Earthquake", "True")], []))
-        #print(self.query([("Alarm", "False")], [("Burglary", "False"), ("Earthquake", "True")]))
-        print(self.query([("happy", "True")], [])) # should be  0.51575
-        print(self.query([("happy", "True")], [("party","True"),("smart","True"),("creative","False")])) #0.6922
-        print(self.query([("happy", "True")], [("smart", "True"), ("creative", "True")]))  # 0.58132
-        print(self.query([("happy", "True")], [("party", "False"), ("hw", "True"), ("project","True")]))  # 0.32108
-        print(self.query([("happy", "True")], [("mac","True")]))  # 0.56269
-        print(self.query([("party", "True")], [("smart","True")]))  # 0.60216
-        print(self.query([("party", "True")], [("smart", "True"),("happy","True")]))  # 0.79204
-        # for the given example:
         # self.answer = [{"index": 1, "answer": 0.01}, {"index": 2, "answer": 0.71}]
         # the format of the answer returned SHOULD be as shown above.
         for query in self.queries:
@@ -193,7 +183,6 @@ def main():
     b_network = BayesianNetwork(structure, values, queries)
     b_network.construct()
     answers = b_network.infer()
-    print(answers)
 
 
 
